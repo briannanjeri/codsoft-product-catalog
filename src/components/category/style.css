@@ -1,0 +1,95 @@
+.category-container{
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+}
+
+.category-btn button {
+    background-color: black;
+color: white;
+    width: 150px;
+    margin: 5px 10px;
+    padding: 12px 0;
+    border: 2px solid white;
+    position: relative;
+    z-index: 1;
+    transition:transform, color 0.5s;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.category-btn button::before {
+    content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        z-index: -1;
+        transition: 0.5s;
+        width: 0px;
+        height: 100%;
+}
+
+.category-btn button:hover:before {
+  width: 100%;
+}
+.category-btn button:hover {
+    
+    color: #000;
+}
+
+.cart-button {
+background-color: aqua;
+padding: 10px 15px;
+border: 2px solid white;
+border-radius: 5px;
+
+    
+}
+
+.products-container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.products-Card  {
+    width: 20%;
+    padding: 30px 0px;
+    border: 2px solid white;
+    margin: 15px;
+    box-shadow: 4px 8px 10px (rgba(0, 0, 0 0.1));
+
+}
+
+.products-Card img {
+   width:100% ;
+   height: 120px;
+   object-fit: cover;
+
+}
+
+.cart-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.cart-icon {
+    font-size: 34px;
+    color: gold;
+}
+
+.cart-count {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #007bff;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
