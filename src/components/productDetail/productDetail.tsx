@@ -4,6 +4,8 @@ import { useProductContext } from "../productContext";
 import { useParams } from "react-router-dom";
 import { ProductProps } from "../type";
 import "./style.css";
+import CartSummary from "../cartSummary/cartSummary";
+
 export const ProductDetail = () => {
   const {
     products,
@@ -19,9 +21,6 @@ export const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [imageInView, setImageInView] = useState<string>();
   const [quantityAdded, setQuantityAdded] = useState<number>();
-  const [quantity, setQuantity] = useState<number | undefined>(
-    cartProducts?.length
-  );
 
   console.log("selectedImage", selectedImage);
 
@@ -146,6 +145,7 @@ export const ProductDetail = () => {
               </button>
             </div>
           </div>
+          <CartSummary />
         </div>
       )}
     </div>

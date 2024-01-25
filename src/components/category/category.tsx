@@ -10,7 +10,6 @@ const Category = () => {
   const { products, setProducts, productsToFilter } = useProductContext();
 
   const [loading, setLoading] = useState(true);
-  console.log("categories", categories);
 
   const getProductCategories = async () => {
     const data = await fetchProductCategories();
