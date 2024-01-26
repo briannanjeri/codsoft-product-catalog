@@ -54,3 +54,44 @@ margin-left: 30px;
   font-size: 18px;
   color: silver;
 }
+
+@media screen and (max-width: 600px) {
+    .cart-product {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .product-cart-details {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .thumbnail {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .thumbnail img {
+        width: 100%;
+    }
+
+    .product-cart-title h4 {
+        margin-bottom: 5px;
+    }
+
+    .cart-price {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .fa-trash {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .numbers-added {
+        gap: 2px;
+        font-size: 14px;
+    }
+}

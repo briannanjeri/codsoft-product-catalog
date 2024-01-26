@@ -48,11 +48,7 @@ border-radius: 5px;
     
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+
 
 .products-container {
     display: flex;
@@ -126,4 +122,17 @@ body {
     font-size: 12px;
     padding: 2px 6px;
     border-radius: 50%;
+}
+
+
+/*--category media-query--*/
+@media screen and (max-width: 600px) {
+    .category-container {
+        flex-direction: column;
+    }
+
+    .category-btn button {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
