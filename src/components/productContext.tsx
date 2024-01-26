@@ -27,7 +27,6 @@ export const ProductProvider = ({ children }: Props) => {
   const [cartQuantity, setCartQuantity] = useState<number>();
 
   const [loading, setLoading] = useState(true);
-  console.log("products", products);
 
   const getAllProducts = async () => {
     try {
@@ -40,7 +39,6 @@ export const ProductProvider = ({ children }: Props) => {
       setProductsToFilter(data.products);
       setLoading(false);
     } catch (error) {
-      console.log("error", error);
     } finally {
       setLoading(false);
     }

@@ -23,7 +23,6 @@ export const ProductListings = () => {
           }
         });
       } else {
-        console.log("product exists");
       }
     }
   };

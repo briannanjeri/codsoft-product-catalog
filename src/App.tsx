@@ -3,13 +3,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./components/home/home";
 import { ProductDetail } from "./components/productDetail/productDetail";
-import ShoppingCart from "./components/shoppingCart";
 import ShoppingCartDetails from "./components/shoppingCartDetails/shoppingCartDetails";
-
+import Navbar from "./components/Navbar/navbar";
 function App() {
   return (
     <div className="App">
-      <ShoppingCart />
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />}></Route>

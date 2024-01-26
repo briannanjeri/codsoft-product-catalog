@@ -27,7 +27,6 @@ const ShoppingCartDetails = () => {
       }
     }
   }, []);
-  console.log("uniqueCartProducts", uniqueProducts);
 
   const removeProduct = (item: ProductProps) => {
     const updatedProducts = cartProducts?.filter(
@@ -50,36 +49,37 @@ const ShoppingCartDetails = () => {
             <div className="thumbnail">
               <img src={product.thumbnail} alt={product.title} />
               <div>
-                <span>
-                  <FontAwesomeIcon
-                    className="fa-Trash"
-                    icon={faTrash}
-                    onClick={() => removeProduct(product)}
-                    style={{ cursor: "pointer" }}
-                  />
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => removeProduct(product)}
+                >
+                  <span>
+                    <FontAwesomeIcon className="fa-Trash" icon={faTrash} />
+                  </span>
+                  <span>remove Item</span>
                 </span>
-                <span>remove Item</span>
               </div>
             </div>
-            <div className="title">
+            <div className="product-cart-title">
               <h4>{product.title}</h4>
-              <div>
+              <div className="numbers-added">
                 {filteredProducts &&
                   filteredProducts.map((filteredProduct: any) =>
                     filteredProduct
                       .slice(0, 1)
                       .map(
                         (filterProduct: any) =>
-                          filterProduct.id === product.id &&
-                          filteredProduct.length
+                          filterProduct.id === product.id && (
+                            <div> {filteredProduct.length}</div>
+                          )
                       )
                   )}
                 items added to the cart
               </div>
             </div>
-          </div>
-          <div className="price">
-            <p>kshs: {product.price}</p>
+            <div className="cart-price">
+              <p>USD: {product.price}</p>
+            </div>
           </div>
         </div>
       ))}

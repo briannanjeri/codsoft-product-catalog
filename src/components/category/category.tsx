@@ -8,6 +8,7 @@ import ShoppingCart from "../shoppingCart";
 const Category = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const { products, setProducts, productsToFilter } = useProductContext();
+  const [activeButton, setActiveButton] = useState<string>("");
 
   const [loading, setLoading] = useState(true);
 
@@ -21,26 +22,49 @@ const Category = () => {
     getProductCategories();
   }, []);
 
-  if (loading) {
-    return <div>loading...</div>;
-  }
-
   const filterProductOfCategories = (category: string) => {
     const filteredProducts = productsToFilter?.filter(
       (product) => product.category === category
     );
-    console.log("filteredProducts");
     if (filteredProducts) {
       setProducts(filteredProducts);
     }
   };
 
+  const handleButtonClick = (clickedButton: string) => {
+    setActiveButton(clickedButton);
+  };
+  const checkIsButtonActive = (clickedButton: string) => {
+    if (activeButton === clickedButton) return true;
+    return;
+  };
+
+  useEffect(() => {
+    if (activeButton) {
+      const filteredProducts = productsToFilter?.filter(
+        (product) => product.category === activeButton
+      );
+      if (filteredProducts) {
+        setProducts(filteredProducts);
+      }
+    }
+  }, [activeButton]);
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
   return (
     <div className="category-container">
       {categories &&
         categories.slice(0, 6).map((category, index) => (
           <div key={index} className="category-btn">
-            <button onClick={() => filterProductOfCategories(category)}>
+            <button
+              style={{
+                backgroundColor: checkIsButtonActive(category) && "white",
+                color: checkIsButtonActive(category) && "black",
+              }}
+              onClick={() => handleButtonClick(category)}
+            >
               {category}
             </button>
           </div>

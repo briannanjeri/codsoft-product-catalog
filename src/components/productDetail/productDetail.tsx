@@ -22,8 +22,6 @@ export const ProductDetail = () => {
   const [imageInView, setImageInView] = useState<string>();
   const [quantityAdded, setQuantityAdded] = useState<number>();
 
-  console.log("selectedImage", selectedImage);
-
   const { id } = useParams();
   let productId: number | undefined;
 
@@ -39,7 +37,6 @@ export const ProductDetail = () => {
   }, [productId]);
 
   if (selectedProduct) {
-    console.log("selectedproduct", selectedProduct);
   }
 
   useEffect(() => {
@@ -47,7 +44,6 @@ export const ProductDetail = () => {
       setImageInView(selectedProduct.thumbnail);
     }
   }, [selectedProduct]);
-  console.log("imageInView", imageInView);
 
   const updateImage = (clickedImage: any) => {
     setSelectedImage(clickedImage);
@@ -72,7 +68,6 @@ export const ProductDetail = () => {
         (cartProduct) => cartProduct.id === product.id
       );
       setQuantityAdded(addedItems?.length);
-      console.log("addedItems", addedItems);
     }
   }, [cartProducts]);
 
@@ -81,7 +76,6 @@ export const ProductDetail = () => {
       const indexOfItemToRemove = cartProducts.findIndex(
         (product) => product.id == Item.id
       );
-      console.log("indexOfItemToRemove", indexOfItemToRemove);
       if (indexOfItemToRemove !== -1 && quantityAdded > 1) {
         cartProducts.splice(indexOfItemToRemove, 1);
         setCartQuantity(cartProducts?.length);
@@ -121,29 +115,33 @@ export const ProductDetail = () => {
             <div className="description">
               Description:{selectedProduct.description}
             </div>
-            <div className="price">KSHS:{selectedProduct.price}</div>
+            <div className="price">USD:{selectedProduct.price}</div>
             <div className="discount">
               Discount:{selectedProduct.discountPercentage}
             </div>
             <div className="rating">rating{selectedProduct.rating}</div>
             <div className="stock">stock:{selectedProduct.stock}</div>
             <hr></hr>
-
-            <div className="quantity-container">
-              <button
-                className="quantity-button"
-                onClick={() => subtractItem(selectedProduct)}
-              >
-                -
-              </button>
-              <div>{quantityAdded} items added to the cart</div>
-              <button
-                className="quantity-button"
-                onClick={() => addProductToCart(selectedProduct)}
-              >
-                +
-              </button>
-            </div>
+            {cartProducts?.some(
+              (cartProduct) => cartProduct.id === selectedProduct.id
+            ) && (
+              <div className="quantity-container">
+                <button
+                  style={{ opacity: quantityAdded === 1 ? 0.3 : 1 }}
+                  className="quantity-button"
+                  onClick={() => subtractItem(selectedProduct)}
+                >
+                  -
+                </button>
+                <div>{quantityAdded} items added to the cart</div>
+                <button
+                  className="quantity-button"
+                  onClick={() => addProductToCart(selectedProduct)}
+                >
+                  +
+                </button>
+              </div>
+            )}
           </div>
           <CartSummary />
         </div>

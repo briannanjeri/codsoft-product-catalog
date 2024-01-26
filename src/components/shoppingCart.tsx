@@ -5,7 +5,6 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 const ShoppingCart = () => {
   const { cartProducts, cartQuantity, setCartQuantity } = useProductContext();
-  console.log("cartProducts", cartProducts);
 
   const navigate = useNavigate();
 
@@ -18,7 +17,6 @@ const ShoppingCart = () => {
       setCartQuantity(cartProducts.length);
     }
   }, [cartProducts]);
-  console.log("cartQuantity", cartQuantity);
   return (
     <div className="cart-container">
       <FontAwesomeIcon

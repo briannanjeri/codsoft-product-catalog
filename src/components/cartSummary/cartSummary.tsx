@@ -9,19 +9,15 @@ const CartSummary = () => {
   if (cartProducts) {
     for (const product of cartProducts) {
       if (product.discountPercentage) {
-        console.log(product.price, product.discountPercentage);
         const remainder =
           product.price -
           Math.floor((product.discountPercentage / 100) * product.price);
-        console.log("remainder", remainder);
         sum += remainder;
       } else {
         sum += product.price;
       }
     }
   }
-
-  console.log("subTotal", subTotal);
 
   return (
     <div className="cart-summary">
